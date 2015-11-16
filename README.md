@@ -22,6 +22,7 @@
 ```sh
 vagrant box add hackathon hackathon.box
 vagrant up
+vagrant ssh
 ```
 4. Set up your git config inside the VM
 ```sh
