@@ -18,16 +18,22 @@
 ## Installation
 1. Install VirtualBox and Vagrant.
 2. Clone this repo.
-3. Run
+3. Download  [this file] (https://drive.google.com/file/d/0Byl_qxkqW6EWOGM0NUh2OEM1V1E/view?usp=sharing) and place it in the cloned folder.  
+4. Run
 ```sh
 vagrant box add hackathon hackathon.box
 vagrant up
 vagrant ssh
 ```
-4. Set up your git config inside the VM
+5. Set up your git config inside the VM
 ```sh
 git config --global user.name <username>
 git config --global user.email <email@email>
+```
+6. To logout of the SSH session, just ctrl-C or close close the terminal.
+7. To shutdown the VM, go to the cloned folder and type in the ff:
+```sh
+vagrant halt
 ```
 
 ## Usage
@@ -57,5 +63,5 @@ python -m http.server
 - Port: 3306
 
 - - -
-## 	"Don't worry about what anybody else is going to do. The best way to predict the future is to invent it."
-### - Alan Kay
+>"Don't worry about what anybody else is going to do. The best way to predict the future is to invent it."
+-Alan Kay
