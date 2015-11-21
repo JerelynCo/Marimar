@@ -97,19 +97,38 @@
 							       d >= 10   ? '#fde9ed' :
 							       d >= 5   ? '#fef4f6' :
 							       d >= 0   ? '#ffffff' :
-							                  '#FFEDA0';
+							                  '#ffffff';
+						}
+
+						function getSaturation(city){
+							for(var i = 0; i< count.cities.length; i++){
+							    if (city == count.cities[i].City) {
+							    	return (count.cities[i].Count/highest * 100);
+							    }
+							}
+							return 0;
 						}
 
 						function style(feature) {
 						    return {
-						        fillColor: getColor(feature.properties.density),
+						        fillColor: getColor(getSaturation(feature.properties.NAME_2)),
 						        weight: 2,
 						        opacity: 1,
-						        color: 'white',
+						        color: '#ec264f',
 						        dashArray: '3',
 						        fillOpacity: 0.7
 						    };
 						}
+
+
+						var highest = 0;
+						var count = { "cities" : [{"City":"Kalookan","Count":6.0},{"City":"Quezon","Count":13.0},{"City":"Muntinlupa","Count":5.0},{"City":"Marikina","Count":6.0},{"City":"Pasig","Count":9.0},{"City":"Manila","Count":6.0},{"City":"Makati","Count":1.0},{"City":"Mandaluyong","Count":1.0},{"City":"Taguig","Count":1.0},{"City":"Valenzuela","Count":2.0}]};
+
+						$.each(count.cities, function(i, v) {
+						    if (highest < v.Count) {
+						    	highest = v.Count;
+						    }
+						});
 
 						var mapboxAccessToken = 'pk.eyJ1Ijoib2ZmaWNpYWxqb3NodWEiLCJhIjoiY2loOHNqOHk4MHMxYnVra3RubDVxaWJyaiJ9.BlgD_oWpdt2hCwiYcdS2nQ';
 						var map = L.map('map', 'mapbox.streets')
@@ -122,9 +141,6 @@
 						    minZoom: 10,
 						    accessToken: 'pk.eyJ1Ijoib2ZmaWNpYWxqb3NodWEiLCJhIjoiY2loOHNqOHk4MHMxYnVra3RubDVxaWJyaiJ9.BlgD_oWpdt2hCwiYcdS2nQ'
 						}).addTo(map);
-
-						var geodataMetroManila = JSON.parse(metroManilaData);
-						var Count = [{"City":"Kalookan","Count":6.0},{"City":"Quezon","Count":13.0},{"City":"Muntinlupa","Count":5.0},{"City":"Marikina","Count":6.0},{"City":"Pasig","Count":9.0},{"City":"Manila","Count":6.0},{"City":"Makati","Count":1.0},{"City":"Mandaluyong","Count":1.0},{"City":"Taguig","Count":1.0},{"City":"Valenzuela","Count":2.0}];
 
 						L.geoJson(metroManilaData, {style:style}).addTo(map);
 
