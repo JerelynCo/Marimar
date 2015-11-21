@@ -23,6 +23,11 @@
 		<script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
 		<link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
 
+
+		<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+		<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+		<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
+
 	</head>
 
 	<body>
@@ -168,7 +173,7 @@
 							}
 						}
 
-						var markers = new L.FeatureGroup();
+						var markers = new L.MarkerClusterGroup();
 						var currentMarker;
 						var highest = 0;
 						var count = {};

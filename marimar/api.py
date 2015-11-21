@@ -47,7 +47,7 @@ class HospInfo(Resource):
     hospInfo = pd.DataFrame()
 
     def get(self):
-        hospInfo = hosp_data[['FacilityName', 'Type', 'Classification', 'StreetNameAnd#', 'BarangayName', 'City', 'lon', 'lat', 'LandlineNumber']]
+        hospInfo = hosp_data[['FacilityName', 'Type', 'Classification', 'StreetNameAndNo', 'BarangayName', 'City', 'lon', 'lat', 'LandlineNumber']]
         return make_response(hospInfo.to_json(orient='records'))
 api.add_resource(HospInfo, '/hospinfo')
 
