@@ -189,6 +189,17 @@
 						    shadowAnchor: [0, 0],  // the same for the shadow
 						    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 						});
+
+						var pinme = L.icon({
+						    iconUrl: 'Stylesheets/Assets/pins_me.png',
+						    shadowUrl: 'Stylesheets/Assets/pins_shadow.png',
+
+						    iconSize:     [50, 125], // size of the icon
+						    shadowSize:   [90, 125], // size of the shadow
+						    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+						    shadowAnchor: [0, 0],  // the same for the shadow
+						    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+						});
 						// NO MORE PINS
 
 						var mapboxAccessToken = 'pk.eyJ1Ijoib2ZmaWNpYWxqb3NodWEiLCJhIjoiY2loOHNqOHk4MHMxYnVra3RubDVxaWJyaiJ9.BlgD_oWpdt2hCwiYcdS2nQ';
@@ -205,7 +216,7 @@
 
 						L.geoJson(metroManilaData, {style:style}).addTo(map);
 
-    					L.marker([14.600657, 120.98215], {icon: pin1}).addTo(map);
+    					L.marker([14.600657, 120.98215], {icon: pinme}).addTo(map);
 					</script>
 				</div>
 			</div>
