@@ -30,13 +30,15 @@ def haversine(lon1, lat1, lon2, lat2):
 """
 API for topfive nearby hospitals
 """
-class TopFive(Resource):
-    hosp_data['dist'] = 0.0
-    def get(self, pt1_lon, pt1_lat):
-        for i in range(hosp_data.shape[0]):
-            hosp_data['dist'][i] = haversine(pt1_lon, pt1_lat, hosp_data['lon'][i], hosp_data['lat'][i])
-        return make_response(hosp_data.sort(columns='dist')[:5].to_json(orient='records'))
-api.add_resource(TopFive, '/topfive/<float:pt1_lon>/<float:pt1_lat>')
+class TopFive(Resource): 
+    def get(self, facility, pt1_lon, pt1_lat):
+        filtered = hosp_data[hosp_data[facility]==1].reset_index()
+        filtered['dist'] = 0.0
+
+        for i in range(filtered.shape[0]):
+            filtered['dist'][i] = haversine(pt1_lon, pt1_lat, filtered['lon'][i], filtered['lat'][i])
+        return make_response(filtered.sort(columns='dist')[:5].to_json(orient='records'))
+api.add_resource(TopFive, '/topfive/<string:facility>/<float:pt1_lon>/<float:pt1_lat>')
 
 """
 API for Health Center info
