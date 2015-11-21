@@ -129,14 +129,6 @@
 						        fillOpacity: 0.7
 						    };
 						}
-						function onMapClick(e) {
-	    					if(currentMarker != null)
-	    						map.removeLayer(currentMarker)
-	    					currentMarker = L.marker(e.latlng, {icon: pinme}).addTo(map);
-	    					markers.clearLayers();
-							plotHospitals(currentMarker, top5Hosps);
-
-						}
 
 						function plotAllHospitals(hospitalJson){
 							for(var i = 0; i < hospitals.length; i++){
@@ -156,20 +148,28 @@
 							}
 						}
 
+						function onMapClick(e) {
+	    					if(currentMarker != null)
+	    						map.removeLayer(currentMarker)
+	    					currentMarker = L.marker(e.latlng, {icon: pinme}).addTo(map);
+	    					markers.clearLayers();
+							plotHospitals(currentMarker, top5Hosps);
+						}
+
 						function plotHospitals(fromMarker, top5Hospitals){
-							for(var i = 0; i < top5Hospitals.hospitals.length; i++){
+							for(var i = 0; i < hospitals.length; i++){
 								var pin;
-								if(top5Hospitals.hospitals[i].dist < 1)
+								if(hospitals[i].dist < 1)
 									pin = pin1
-								else if(top5Hospitals.hospitals[i].dist < 2.5)
+								else if(hospitals[i].dist < 2.5)
 									pin = pin2
-								else if(top5Hospitals.hospitals[i].dist < 5)
+								else if(hospitals[i].dist < 5)
 									pin = pin3
-								else if(top5Hospitals.hospitals[i].dist < 10)
+								else if(hospitals[i].dist < 10)
 									pin = pin4
 								else
 									pin = pin5
-		    					markers.addLayer(L.marker([top5Hospitals.hospitals[i].lat, top5Hospitals.hospitals[i].lon], {icon: pin}));
+		    					markers.addLayer(L.marker([hospitals[i].lat, hospitals[i].lon], {icon: pin}));
 							}
 						}
 
