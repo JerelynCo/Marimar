@@ -149,7 +149,7 @@ div.filter-title
 	width: 100%;
 	height: auto;
 
-	background: #2AE9B8;
+	background: #ec264f;
 
 	padding: 10px 0px 10px 10px;
 
@@ -183,7 +183,7 @@ div.filter-options, div.filter-options-last
 
 div.filter-options
 {
-	border-bottom: 2px Solid #2AE9B8;
+	border-bottom: 2px Solid #ec264f;
 }
 
 div.filter-options-menu
@@ -210,7 +210,7 @@ div.filter-options:hover, div.filter-options-last:hover
 
 div.filter-options:hover
 {
-	border-bottom: 2px Solid #2AE9B8;
+	border-bottom: 2px Solid #ec264f;
 }
 
 /*
