@@ -16,6 +16,8 @@
 	  	<script src="Scripts/jquery-2.1.4.min.js"></script>
 
 	  	<script src="MetropolitantManila.json"></script>
+	  	<script src="big.json"></script>
+	  	<script src="top5Hosps.json"></script>
 
 		<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
 		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css">
@@ -128,8 +130,25 @@
 	    					if(currentMarker != null)
 	    						map.removeLayer(currentMarker)
 	    					currentMarker = L.marker(e.latlng, {icon: pinme}).addTo(map);
+	    					markers.clearLayers();
+							plotHospitals(currentMarker, top5Hosps);
+
 						}
 
+						function plotAllHospitals(hospitalJson){
+							for(var i = 0; i < hospitalJson.hospitals.length; i++){
+								markers.addLayer(L.marker([hospitalJson.hospitals[i].lat,hospitalJson.hospitals[i].lon], {icon: pinme}));
+
+							}
+						}
+
+						function plotHospitals(fromMarker, top5Hospitals){
+							for(var i = 0; i < top5Hospitals.hospitals.length; i++){
+		    					markers.addLayer(L.marker([top5Hospitals.hospitals[i].lat, top5Hospitals.hospitals[i].lon], {icon: pinme}));
+							}
+						}
+
+						var markers = new L.FeatureGroup();
 						var currentMarker;
 						var highest = 0;
 						var count = { "cities" : [{"City":"Kalookan","Count":6.0},{"City":"Quezon","Count":13.0},{"City":"Muntinlupa","Count":5.0},{"City":"Marikina","Count":6.0},{"City":"Pasig","Count":9.0},{"City":"Manila","Count":6.0},{"City":"Makati","Count":1.0},{"City":"Mandaluyong","Count":1.0},{"City":"Taguig","Count":1.0},{"City":"Valenzuela","Count":2.0}]};
@@ -227,10 +246,18 @@
 						//on map click
 						map.on('click', onMapClick);
 
-						var layer;// = L.geoJson(metroManilaData, {style:style});
-                        // layer.addTo(map);
+						map.addLayer(markers);
 
-    					L.marker([14.600657, 120.98215], {icon: pinme}).addTo(map);
+//    					L.marker([14.600657, 120.98215], {icon: pinme}).addTo(map);
+
+                        //hospitals is big.json. please delete the file after integrating
+                        plotAllHospitals(hospitals);
+
+
+
+
+
+
 
                         $(".filter-options").on("click", function(){
                             $.getJSON("http://localhost:8000/citycount/" + this.id, function(result){
