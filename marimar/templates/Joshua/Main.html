@@ -80,26 +80,26 @@
 					<script>
 						// get color depending on population density value
 						function getColor(d) {
-							return d ==100 ? '#ec264f' :
+							return d ==100 ? '#37eabc' :
 							       d >= 95  ? '#ed3158' :
-							       d >= 90  ? '#ee3b60' :
-							       d >= 85  ? '#ef4669' :
-							       d >= 80   ? '#f05172' :
-							       d >= 75   ? '#f15c7b' :
-							       d >= 70   ? '#f26783' :
-							       d >= 65   ? '#f3728c' :
-							       d >= 60   ? '#f47d95' :
-							       d >= 55   ? '#f5889e' :
-							       d >= 50   ? '#f592a7' :
-							       d >= 45   ? '#f69db0' :
-							       d >= 40   ? '#f7a8b9' :
-							       d >= 35   ? '#f8b3c2' :
-							       d >= 30   ? '#f9bdca' :
-							       d >= 25   ? '#fac9d3' :
-							       d >= 20   ? '#fbd4dc' :
-							       d >= 15   ? '#fcdfe5' :
-							       d >= 10   ? '#fde9ed' :
-							       d >= 5   ? '#fef4f6' :
+							       d >= 90  ? '#4becc3' :
+							       d >= 85  ? '#55edc6' :
+							       d >= 80   ? '#5feeca' :
+							       d >= 75   ? '#69efcd' :
+							       d >= 70   ? '#73f1d0' :
+							       d >= 65   ? '#7df2d4' :
+							       d >= 60   ? '#87f3d7' :
+							       d >= 55   ? '#91f4da' :
+							       d >= 50   ? '#9bf5de' :
+							       d >= 45   ? '#a5f6e1' :
+							       d >= 40   ? '#aff7e4' :
+							       d >= 35   ? '#b9f8e8' :
+							       d >= 30   ? '#c3f9eb' :
+							       d >= 25   ? '#cdfaee' :
+							       d >= 20   ? '#d7fbf2' :
+							       d >= 15   ? '#e1fcf5' :
+							       d >= 10   ? '#ebfdf8' :
+							       d >= 5   ? '#f5fefc' :
 							       d >= 0   ? '#ffffff' :
 							                  '#ffffff';
 						}
@@ -118,13 +118,23 @@
 						        fillColor: getColor(getSaturation(feature.properties.NAME_2)),
 						        weight: 2,
 						        opacity: 1,
-						        color: '#ec264f',
+						        color: '#37eabc',
 						        dashArray: '3',
 						        fillOpacity: 0.7
 						    };
 						}
 
+						function onMapClick(e) {
+	    					//var m = marker.getLatLng();
+	    					
+	    					//L.setLatLng(e.latmarker(e.getLatLng, {icon: pinme}).addTo(map);
 
+	    					if(currentMarker != null)
+	    						map.removeLayer(currentMarker)
+	    					currentMarker = L.marker(e.latlng, {icon: pinme}).addTo(map);
+						}
+
+						var currentMarker;
 						var highest = 0;
 						var count = { "cities" : [{"City":"Kalookan","Count":6.0},{"City":"Quezon","Count":13.0},{"City":"Muntinlupa","Count":5.0},{"City":"Marikina","Count":6.0},{"City":"Pasig","Count":9.0},{"City":"Manila","Count":6.0},{"City":"Makati","Count":1.0},{"City":"Mandaluyong","Count":1.0},{"City":"Taguig","Count":1.0},{"City":"Valenzuela","Count":2.0}]};
 
@@ -152,8 +162,8 @@
 
 						    iconSize:     [50, 125], // size of the icon
 						    shadowSize:   [90, 125], // size of the shadow
-						    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-						    shadowAnchor: [0, 0],  // the same for the shadow
+						    iconAnchor:   [25, 100], // point of the icon which will correspond to marker's location
+						    shadowAnchor: [25, 100],  // the same for the shadow
 						    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 						});
 
@@ -163,8 +173,8 @@
 
 						    iconSize:     [50, 125], // size of the icon
 						    shadowSize:   [90, 125], // size of the shadow
-						    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-						    shadowAnchor: [0, 0],  // the same for the shadow
+						    iconAnchor:   [25, 100], // point of the icon which will correspond to marker's location
+						    shadowAnchor: [25, 100],  // the same for the shadow
 						    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 						});
 
@@ -174,8 +184,8 @@
 
 						    iconSize:     [50, 125], // size of the icon
 						    shadowSize:   [90, 125], // size of the shadow
-						    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-						    shadowAnchor: [0, 0],  // the same for the shadow
+						    iconAnchor:   [25, 100], // point of the icon which will correspond to marker's location
+						    shadowAnchor: [25, 100],  // the same for the shadow
 						    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 						});
 
@@ -185,8 +195,8 @@
 
 						    iconSize:     [50, 125], // size of the icon
 						    shadowSize:   [90, 125], // size of the shadow
-						    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-						    shadowAnchor: [0, 0],  // the same for the shadow
+						    iconAnchor:   [25, 100], // point of the icon which will correspond to marker's location
+						    shadowAnchor: [25, 100],  // the same for the shadow
 						    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 						});
 
@@ -196,8 +206,8 @@
 
 						    iconSize:     [50, 125], // size of the icon
 						    shadowSize:   [90, 125], // size of the shadow
-						    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
-						    shadowAnchor: [0, 0],  // the same for the shadow
+						    iconAnchor:   [25, 100], // point of the icon which will correspond to marker's location
+						    shadowAnchor: [25, 100],  // the same for the shadow
 						    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 						});
 						// NO MORE PINS
@@ -214,9 +224,13 @@
 						    accessToken: 'pk.eyJ1Ijoib2ZmaWNpYWxqb3NodWEiLCJhIjoiY2loOHNqOHk4MHMxYnVra3RubDVxaWJyaiJ9.BlgD_oWpdt2hCwiYcdS2nQ'
 						}).addTo(map);
 
-						L.geoJson(metroManilaData, {style:style}).addTo(map);
+						var layer = L.geoJson(metroManilaData, {style:style}).addTo(map);
 
-    					L.marker([14.600657, 120.98215], {icon: pinme}).addTo(map);
+						layer.on('click',  onMapClick);
+
+						//on map click
+						map.on('click', onMapClick);
+
 					</script>
 				</div>
 			</div>
