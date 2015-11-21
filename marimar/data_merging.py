@@ -23,3 +23,7 @@ missing.to_csv("missing_lat_lon.csv", index=False)
 service = pd.read_csv("serviceCapability.csv")
 hospital_with_service = complete.merge(service, on="Facility Name" , how="left")
 hospital_with_service.drop(["Unnamed: 0", "Province_x", "Province_y", "Region_x", "Region_y"], axis=1, inplace=True)
+
+hospitals = pd.read_csv('hospitals_with_service.csv')
+faci = pd.read_csv('filters.csv')
+hospitals_with_facilities = pd.merge(hospitals, faci, on="level", how="outer")
