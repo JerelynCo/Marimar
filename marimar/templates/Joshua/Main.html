@@ -1,5 +1,5 @@
 <html>
-	
+
 	<head>
 		<title>
 			Main Page
@@ -27,7 +27,7 @@
 
 	<body>
 		<div class="wrapper-outer">
-			<div class="wrapper-inner-border">	
+			<div class="wrapper-inner-border">
 
 				<div class="wrapper-legend">
 					<div class="legend-title-menu">
@@ -40,41 +40,41 @@
 						<div class="legend-options"><div class="legend4"></div>&le; 10 km</div>
 						<div class="legend-options"><div class="legend5"></div>&ge; 10 km</div>
 					</div>
-				</div>	
+				</div>
 
 				<div class="wrapper-filter">
 					<div class="filter-title-menu">
 						<div class="filter-title">Categories</div>
 					</div>
 					<div class="filter-options-menu">
-						<div class="filter-options">Qualified staff headed by a licensed PRC physician</div>
-						<div class="filter-options">Bed Space according to DOH guidelines</div>
-						<div class="filter-options">Operating room with standard equipment with provision for sterilization</div>
-						<div class="filter-options">DOH Reference Plan in the Planning and Design of an Operating Room/Theater</div>
-						<div class="filter-options">DOH Guidelines on Cleaning, Disinfection and Sterilization of Reusable Medical Devices in Hospital Facilities in the Philippines</div>
-						<div class="filter-options">Recovery Room</div>
-						<div class="filter-options">Maternity Ward</div>
-						<div class="filter-options">Isolation room for infectious diseases</div>
-						<div class="filter-options">A separate dental room</div>
-						<div class="filter-options">Provision for blood station</div>
-						<div class="filter-options">DOH licensed secondary laboratory with consulting pathologist</div>
-						<div class="filter-options">DOH licensed level 1 imaging facility with consulting radiologist</div>
-						<div class="filter-options">DOH licensed Pharmacy</div>
-						<div class="filter-options">Qualified staff with Chief Medical Director and certified  Clinical Department Head</div>
-						<div class="filter-options">With specialties in Medicine, Pediatrics, Obstetrics and Gynecology, Surgery; their subspecialties and ancillary services</div>
-						<div class="filter-options">Provision for general ICU for critically ill patients</div>
-						<div class="filter-options">Provision for NICU (Neonatal Intensive Care Unit)</div>
-						<div class="filter-options">Provision for HRPU (High Risk Pregnancy Unit)</div>
-						<div class="filter-options">Provision for respiratory therapy services</div>
-						<div class="filter-options">A DOH licensed tertiary clinical laboratory</div>
-						<div class="filter-options">Teaching or Training hospitals with specialties in Medicine, Pediatrics, Obstetrics and Gynecology, and Surgery</div>
-						<div class="filter-options">Provision for physical medicine and rehabilitation unit</div>
-						<div class="filter-options">Provision for ambulatory surgical clinic</div>
-						<div class="filter-options">Provision for dialysis facility</div>
-						<div class="filter-options">Provision for blood bank</div>
-						<div class="filter-options">A DOH liscensed tertiary clinical laboratory with standard equipment necessary for hispathology examinations</div>
-						<div class="filter-options-last">A DOH licensed level 3 imaging facility with interventional radiology</div>
-					</div>
+                        <div class="filter-options" id="PRCP">Qualified staff headed by a licensed PRC physician</div>
+						<div class="filter-options" id="BedSpace">Bed Space according to DOH guidelines</div>
+						<div class="filter-options" id="OpRoom">Operating room with standard equipment with provision for sterilization</div>
+						<div class="filter-options" id="RecRoom">Recovery Room</div>
+						<div class="filter-options" id="MatWard">Maternity Ward</div>
+						<div class="filter-options" id="IsoRoom">Isolation room for infectious diseases</div>
+						<div class="filter-options" id="dental">A separate dental room</div>
+						<div class="filter-options" id="blood">Provision for blood station</div>
+						<div class="filter-options" id="pathology">DOH licensed secondary laboratory with consulting pathologist</div>
+						<div class="filter-options" id="radiology">DOH licensed level 1 imaging facility with consulting radiologist</div>
+						<div class="filter-options" id="pharmacy">DOH licensed Pharmacy</div>
+						<div class="filter-options" id="CMDCDH_2">Qualified staff with Chief Medical Director and certified  Clinical Department Head</div>
+						<div class="filter-options" id="Spec1">With specialties in Medicine, Pediatrics, Obstetrics and Gynecology, Surgery; their subspecialties and ancillary services</div>
+						<div class="filter-options" id="ICU">Provision for general ICU for critically ill patients</div>
+						<div class="filter-options" id="NICU">Provision for NICU (Neonatal Intensive Care Unit)</div>
+						<div class="filter-options" id="HRPU">Provision for HRPU (High Risk Pregnancy Unit)</div>
+						<div class="filter-options" id="RTS">Provision for respiratory therapy services</div>
+						<div class="filter-options" id="TerClin">A DOH licensed tertiary clinical laboratory</div>
+						<div class="filter-options" id="Teach_3">Teaching or Training hospitals with specialties in Medicine, Pediatrics, Obstetrics and Gynecology, and Surgery</div>
+						<div class="filter-options" id="PRU">Provision for physical medicine and rehabilitation unit</div>
+						<div class="filter-options" id="ASC">Provision for ambulatory surgical clinic</div>
+						<div class="filter-options" id="Dialysis">Provision for dialysis facility</div>
+						<div class="filter-options" id="BBank">Provision for blood bank</div>
+						<div class="filter-options" id="Hispa">A DOH liscensed tertiary clinical laboratory with standard equipment necessary for hispathology examinations</div>
+						<div class="filter-options" id="radiology3">A DOH licensed level 3 imaging facility with interventional radiology</div>
+                        <div class="filter-options" id="HIVTreat">DOH licensed HIV Treatment Facility</div>
+                        <div class="filter-options-last" id="HIVTest">DOH licensed HIV Testing Facility</div>
+                    </div>
 				</div>
 				<div class="wrapper-map" id="map">
 					<script>
@@ -206,6 +206,9 @@
 						L.geoJson(metroManilaData, {style:style}).addTo(map);
 
     					L.marker([14.600657, 120.98215], {icon: pin1}).addTo(map);
+
+
+                        //
 					</script>
 				</div>
 			</div>
