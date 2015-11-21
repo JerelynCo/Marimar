@@ -10,7 +10,7 @@ api = Api(app)
 """
 Loading of data
 """
-hosp_data = pd.read_csv("data/processed/hospitals_with_facilities.csv")
+hosp_data = pd.read_csv("data/processed/hospitals_complete.csv")
 
 def haversine(lon1, lat1, lon2, lat2):
     """
@@ -45,7 +45,7 @@ class HospInfo(Resource):
     hospInfo = pd.DataFrame()
 
     def get(self):
-        hospInfo = hosp_data[['Facility Name', 'Type', 'Classification', 'Street Name and #', 'Barangay Name', 'city', 'lon', 'lat', 'Landline Number']]
+        hospInfo = hosp_data[['Facility Name', 'Type', 'Classification', 'Street Name and #', 'Barangay Name', 'City', 'lon', 'lat', 'Landline Number']]
         return make_response(hospInfo.to_json(orient='records'))
 api.add_resource(HospInfo, '/hospinfo')
 
@@ -61,12 +61,12 @@ class CityCount(Resource):
 
         filtered = hosp_data[hosp_data[facility]==1]
 
-        for i in filtered['city'].unique():
+        for i in filtered['City'].unique():
             city = np.append(city, i)
-            count = np.append(count, filtered[filtered['city'] == i]['city'].size)
+            count = np.append(count, filtered[filtered['City'] == i]['City'].size)
 
-        cityCount['city'] = city
-        cityCount['count'] = count
+        cityCount['City'] = city
+        cityCount['Count'] = count
 
         return make_response(cityCount.to_json(orient='records'))
 api.add_resource(CityCount, '/citycount/<string:facility>')
