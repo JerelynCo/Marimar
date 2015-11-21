@@ -73,12 +73,13 @@
 						<div class="filter-options" id="Hispa">A DOH liscensed tertiary clinical laboratory with standard equipment necessary for hispathology examinations</div>
 						<div class="filter-options" id="radiology3">A DOH licensed level 3 imaging facility with interventional radiology</div>
                         <div class="filter-options" id="HIVTreat">DOH licensed HIV Treatment Facility</div>
-                        <div class="filter-options-last" id="HIVTest">DOH licensed HIV Testing Facility</div>
+                        <div class="filter-options" id="HIVTest">DOH licensed HIV Testing Facility</div>
                     </div>
 				</div>
 				<div class="wrapper-map" id="map">
 					<script>
 						// get color depending on population density value
+
 						function getColor(d) {
 							return d ==100 ? '#37eabc' :
 							       d >= 95  ? '#ed3158' :
@@ -105,9 +106,9 @@
 						}
 
 						function getSaturation(city){
-							for(var i = 0; i< count.cities.length; i++){
-							    if (city == count.cities[i].City) {
-							    	return (count.cities[i].Count/highest * 100);
+							for(var i = 0; i< count.length; i++){
+							    if (city == count[i].City) {
+                                    return (count[i].Count/highest * 100);
 							    }
 							}
 							return 0;
@@ -123,12 +124,7 @@
 						        fillOpacity: 0.7
 						    };
 						}
-
 						function onMapClick(e) {
-	    					//var m = marker.getLatLng();
-	    					
-	    					//L.setLatLng(e.latmarker(e.getLatLng, {icon: pinme}).addTo(map);
-
 	    					if(currentMarker != null)
 	    						map.removeLayer(currentMarker)
 	    					currentMarker = L.marker(e.latlng, {icon: pinme}).addTo(map);
@@ -230,6 +226,30 @@
 
 						//on map click
 						map.on('click', onMapClick);
+
+						var layer;// = L.geoJson(metroManilaData, {style:style});
+                        // layer.addTo(map);
+
+    					L.marker([14.600657, 120.98215], {icon: pinme}).addTo(map);
+
+                        $(".filter-options").on("click", function(){
+                            $.getJSON("http://localhost:8000/citycount/" + this.id, function(result){
+                                try {
+                                    map.removeLayer(layer);
+                                } catch (e) {
+
+                                }
+                                count = result;
+                                highest = 0;
+        						for(var i=0; i<count.length; i++){
+                                        if (highest < count[i].Count){
+                                            highest = count[i].Count;
+                                        }
+                                }
+                                layer = L.geoJson(metroManilaData, {style:style});
+                                layer.addTo(map);
+                            });
+                        });
 
 					</script>
 				</div>
