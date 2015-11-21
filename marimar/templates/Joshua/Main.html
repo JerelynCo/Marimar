@@ -9,9 +9,14 @@
 		<link rel="stylesheet" type="text/css" href="Stylesheets/style.css">
 		<link rel="stylesheet" type="text/css" href="Stylesheets/style-wrapper.css">
 		<link rel="stylesheet" type="text/css" href="Stylesheets/style-main.css">
-		
+		<link rel="stylesheet" type="text/css" href="Scripts/Leaflet/leaflet.css">
+
 		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 		<script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
+	  	<script src="Scripts/Leaflet/leaflet-src.js"></script>
+
+	  	<script src="MetropolitantManila.json"></script>
+
 		<link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
 	</head>
 
@@ -68,9 +73,46 @@
 				</div>
 				<div class="wrapper-map" id="map">
 					<script>
-						L.mapbox.accessToken = 'pk.eyJ1Ijoib2ZmaWNpYWxqb3NodWEiLCJhIjoiY2loOHNqOHk4MHMxYnVra3RubDVxaWJyaiJ9.BlgD_oWpdt2hCwiYcdS2nQ';
-						var map = L.mapbox.map('map', 'mapbox.streets')
+						// get color depending on population density value
+						function getColor(d) {
+							return d ==100 ? '#ec264f' :
+							       d >= 95  ? '#ed3158' :
+							       d >= 90  ? '#ee3b60' :
+							       d >= 85  ? '#ef4669' :
+							       d >= 80   ? '#f05172' :
+							       d >= 75   ? '#f15c7b' :
+							       d >= 70   ? '#f26783' :
+							       d >= 65   ? '#f3728c' :
+							       d >= 60   ? '#f47d95' :
+							       d >= 55   ? '#f5889e' :
+							       d >= 50   ? '#f592a7' :
+							       d >= 45   ? '#f69db0' :
+							       d >= 40   ? '#f7a8b9' :
+							       d >= 35   ? '#f8b3c2' :
+							       d >= 30   ? '#f9bdca' :
+							       d >= 25   ? '#fac9d3' :
+							       d >= 20   ? '#fbd4dc' :
+							       d >= 15   ? '#fcdfe5' :
+							       d >= 10   ? '#fde9ed' :
+							       d >= 5   ? '#fef4f6' :
+							       d >= 0   ? '#ffffff' :
+							                  '#FFEDA0';
+						}
+
+						var mapboxAccessToken = 'pk.eyJ1Ijoib2ZmaWNpYWxqb3NodWEiLCJhIjoiY2loOHNqOHk4MHMxYnVra3RubDVxaWJyaiJ9.BlgD_oWpdt2hCwiYcdS2nQ';
+						var map = L.map('map', 'mapbox.streets')
 						    .setView([14.600657, 120.98215], 11);
+
+						/*Using Mapbox Map*/
+						L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapboxAccessToken, {
+						    attribution: "<a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='https://github.com/macoymejia/geojsonph'>geojsonph</a>",
+						    id: 'mapbox.light',
+						    minZoom: 10,
+						    accessToken: 'pk.eyJ1Ijoib2ZmaWNpYWxqb3NodWEiLCJhIjoiY2loOHNqOHk4MHMxYnVra3RubDVxaWJyaiJ9.BlgD_oWpdt2hCwiYcdS2nQ'
+						}).addTo(map);
+
+						L.geoJson(metroManilaData).addTo(map);
+
 					</script>
 				</div>
 			</div>
