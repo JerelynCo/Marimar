@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"F:/hackathon2015/Hackathon-Vagrant-Box","disabled":false}}}
+=======
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/jerelynco/Documents/Hackathon-Vagrant-Box","disabled":false}}}
+>>>>>>> 94b78b20fa6b37d8c55bac6e2cb56613b4dca51b
