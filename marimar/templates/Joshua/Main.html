@@ -153,13 +153,14 @@
 
 								marker1.bindPopup(popupContent,{
 							        closeButton: false,
-							        minWidth: 320
+							        minWidth: 250
 							    });
 							}
 						}
 
 						function plotHospitals(fromMarker, top5Hospitals){
 							for(var i = 0; i < top5Hospitals.hospitals.length; i++){
+
 								var pin;
 								if(top5Hospitals.hospitals[i].dist < 1)
 									pin = pin1
@@ -171,7 +172,19 @@
 									pin = pin4
 								else
 									pin = pin5
+
+								marker1 = L.marker([hospitalJson.hospitals[i].lat,hospitalJson.hospitals[i].lon], {icon: pin})
 		    					markers.addLayer(L.marker([top5Hospitals.hospitals[i].lat, top5Hospitals.hospitals[i].lon], {icon: pin}));
+
+								var popupContent =  "<p class = 'FacilityName'>" + top5Hospitals.hospitals[i].FacilityName + "</p>" +
+									"<p class = 'OtherName'>" + top5Hospitals.hospitals[i].Classification + " Hospital</p>"+
+									"<p class = 'OtherName'>" + top5Hospitals.hospitals[i].BarangayName + ", " + top5Hospitals.hospitals[i].City + " City</p>"+
+									"<p class = 'OtherName'>Landline: " + top5Hospitals.hospitals[i].LandlineNumber + "</p>";
+
+								marker1.bindPopup(popupContent,{
+							        closeButton: false,
+							        minWidth: 250
+							    });
 							}
 						}
 

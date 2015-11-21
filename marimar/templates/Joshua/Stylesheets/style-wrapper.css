@@ -8,8 +8,6 @@ div.wrapper-outer
 	width: 100%;
 	height: 100%;
 
-	background-color: ;
-
 	margin: 0px;
 	padding: 0px 0px 0px 0px;
 }
@@ -40,8 +38,6 @@ div.legend-title-menu
 	width: 100%;
 	height: 20px;
 
-	background: ;
-
 	overflow-x: hidden;
 }
 
@@ -68,8 +64,6 @@ div.legend-options
 {
 	width: 20%;
 	height: 50px;
-
-	background: ;
 
 	padding: 0px;
 	float: left;
@@ -127,8 +121,6 @@ div.wrapper-filter
 	width: 20%;
 	height: 100%;
 
-	background: ;
-
 	display: block;
 
 	float: left;
@@ -140,8 +132,6 @@ div.filter-title-menu
 	height: auto;
 
 	overflow-x: hidden;
-
-	background: ;
 }
 
 div.filter-title
