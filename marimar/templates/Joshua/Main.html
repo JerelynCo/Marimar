@@ -137,8 +137,19 @@
 
 						function plotAllHospitals(hospitalJson){
 							for(var i = 0; i < hospitalJson.hospitals.length; i++){
-								markers.addLayer(L.marker([hospitalJson.hospitals[i].lat,hospitalJson.hospitals[i].lon], {icon: pinblank}));
+								marker1 = L.marker([hospitalJson.hospitals[i].lat,hospitalJson.hospitals[i].lon], {icon: pinblank})
 
+								markers.addLayer(marker1);
+
+								var popupContent =  "<p class = 'FacilityName'>" + hospitalJson.hospitals[i].FacilityName + "</p>" +
+									"<p class = 'OtherName'>" + hospitalJson.hospitals[i].Classification + " Hospital</p>"+
+									"<p class = 'OtherName'>" + hospitalJson.hospitals[i].BarangayName + ", " + hospitalJson.hospitals[i].City + " City</p>"+
+									"<p class = 'OtherName'>Landline: " + hospitalJson.hospitals[i].LandlineNumber + "</p>";
+
+								marker1.bindPopup(popupContent,{
+							        closeButton: false,
+							        minWidth: 320
+							    });
 							}
 						}
 
