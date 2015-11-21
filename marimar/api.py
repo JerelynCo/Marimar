@@ -36,9 +36,25 @@ class TopFive(Resource):
 api.add_resource(TopFive, '/topFive/<float:pt1_lon>/<float:pt1_lat>')
 
 
+
 class CityCount(Resource):
     def get(self, level):
-        return make_response(hosp_data[hosp_data['level']==level].size)
+        cityCount['city'] = ""
+        cityCount['count'] = 1
+
+        city = np.array([])
+        count = np.array([])
+
+        filtered = hosp_data[hosp_data['level']==level]
+
+        for i in filtered['city'].unique:
+            city = np.append(city, i)
+            count = np.append(count, filtered[filtered['city'] == i].count)
+
+        cityCount['city'] = city
+        cityCount['count'] = count
+        
+        return make_response(cityCount.to_json(orient='records'))
 api.add_resource(CityCount, '/cityCount/<string:level>')
 
 
