@@ -137,15 +137,25 @@
 
 						function plotAllHospitals(hospitalJson){
 							for(var i = 0; i < hospitalJson.hospitals.length; i++){
-								markers.addLayer(L.marker([hospitalJson.hospitals[i].lat,hospitalJson.hospitals[i].lon], {icon: pinme}));
-=======
->>>>>>> Stashed changes
+								markers.addLayer(L.marker([hospitalJson.hospitals[i].lat,hospitalJson.hospitals[i].lon], {icon: pinblank}));
+
 							}
 						}
 
 						function plotHospitals(fromMarker, top5Hospitals){
 							for(var i = 0; i < top5Hospitals.hospitals.length; i++){
-		    					markers.addLayer(L.marker([top5Hospitals.hospitals[i].lat, top5Hospitals.hospitals[i].lon], {icon: pinme}));
+								var pin;
+								if(top5Hospitals.hospitals[i].dist < 1)
+									pin = pin1
+								else if(top5Hospitals.hospitals[i].dist < 2.5)
+									pin = pin2
+								else if(top5Hospitals.hospitals[i].dist < 5)
+									pin = pin3
+								else if(top5Hospitals.hospitals[i].dist < 10)
+									pin = pin4
+								else
+									pin = pin5
+		    					markers.addLayer(L.marker([top5Hospitals.hospitals[i].lat, top5Hospitals.hospitals[i].lon], {icon: pin}));
 							}
 						}
 
@@ -165,8 +175,8 @@
 						    iconUrl: 'Stylesheets/Assets/pins_1.png',
 						    shadowUrl: 'Stylesheets/Assets/pins_shadow.png',
 
-						    iconSize:     [50, 125], // size of the icon
-						    shadowSize:   [90, 125], // size of the shadow
+						    iconSize:     [25, 62.5], // size of the icon
+						    shadowSize:   [45, 62.5], // size of the shadow
 						    iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
 						    shadowAnchor: [0, 0],  // the same for the shadow
 						    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
@@ -176,8 +186,8 @@
 						    iconUrl: 'Stylesheets/Assets/pins_2.png',
 						    shadowUrl: 'Stylesheets/Assets/pins_shadow.png',
 
-						    iconSize:     [50, 125], // size of the icon
-						    shadowSize:   [90, 125], // size of the shadow
+						    iconSize:     [25, 62.5], // size of the icon
+						    shadowSize:   [45, 62.5], // size of the shadow
 						    iconAnchor:   [25, 100], // point of the icon which will correspond to marker's location
 						    shadowAnchor: [25, 100],  // the same for the shadow
 						    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
@@ -187,8 +197,8 @@
 						    iconUrl: 'Stylesheets/Assets/pins_3.png',
 						    shadowUrl: 'Stylesheets/Assets/pins_shadow.png',
 
-						    iconSize:     [50, 125], // size of the icon
-						    shadowSize:   [90, 125], // size of the shadow
+						    iconSize:     [25, 62.5], // size of the icon
+						    shadowSize:   [45, 62.5], // size of the shadow
 						    iconAnchor:   [25, 100], // point of the icon which will correspond to marker's location
 						    shadowAnchor: [25, 100],  // the same for the shadow
 						    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
@@ -198,8 +208,8 @@
 						    iconUrl: 'Stylesheets/Assets/pins_4.png',
 						    shadowUrl: 'Stylesheets/Assets/pins_shadow.png',
 
-						    iconSize:     [50, 125], // size of the icon
-						    shadowSize:   [90, 125], // size of the shadow
+						    iconSize:     [25, 62.5], // size of the icon
+						    shadowSize:   [45, 62.5], // size of the shadow
 						    iconAnchor:   [25, 100], // point of the icon which will correspond to marker's location
 						    shadowAnchor: [25, 100],  // the same for the shadow
 						    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
@@ -209,19 +219,31 @@
 						    iconUrl: 'Stylesheets/Assets/pins_5.png',
 						    shadowUrl: 'Stylesheets/Assets/pins_shadow.png',
 
-						    iconSize:     [50, 125], // size of the icon
-						    shadowSize:   [90, 125], // size of the shadow
+						    iconSize:     [25, 62.5], // size of the icon
+						    shadowSize:   [45, 62.5], // size of the shadow
 						    iconAnchor:   [25, 100], // point of the icon which will correspond to marker's location
 						    shadowAnchor: [25, 100],  // the same for the shadow
 						    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 						});
 
+						var pinblank = L.icon({
+						    iconUrl: 'Stylesheets/Assets/pins_blank.png',
+						    shadowUrl: 'Stylesheets/Assets/pins_shadow.png',
+
+						    iconSize:     [25, 62.5], // size of the icon
+						    shadowSize:   [45, 62.5], // size of the shadow
+						    iconAnchor:   [25, 100], // point of the icon which will correspond to marker's location
+						    shadowAnchor: [25, 100],  // the same for the shadow
+						    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+						});
+
+
 						var pinme = L.icon({
 						    iconUrl: 'Stylesheets/Assets/pins_me.png',
 						    shadowUrl: 'Stylesheets/Assets/pins_shadow.png',
 
-						    iconSize:     [50, 125], // size of the icon
-						    shadowSize:   [90, 125], // size of the shadow
+						    iconSize:     [25, 62.5], // size of the icon
+						    shadowSize:   [45, 62.5], // size of the shadow
 						    iconAnchor:   [25, 100], // point of the icon which will correspond to marker's location
 						    shadowAnchor: [25, 100],  // the same for the shadow
 						    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
