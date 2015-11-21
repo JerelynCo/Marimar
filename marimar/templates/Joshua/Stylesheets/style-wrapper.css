@@ -21,9 +21,9 @@ div.wrapper-outer
 div.wrapper-legend 
 {
 	width: 300px;
-	height: 60px;
+	height: 70px;
 
-	background: green;
+	background-image: url("Assets/black_50.png");
 
 	bottom: 5%;
 	left: 50%;
@@ -40,7 +40,7 @@ div.legend-title-menu
 	width: 100%;
 	height: 20px;
 
-	background: white;
+	background: ;
 
 	overflow-x: hidden;
 }
@@ -52,7 +52,8 @@ div.legend-title
 
 	padding: 5px 0px 0px 0px;
 
-	font: 10px "Arial";
+	font: 800 11px "Arial";
+	color: #FFFFFF;
 
 	text-align: center;
 }
@@ -60,20 +61,61 @@ div.legend-title
 div.legend-options-menu
 {
 	width: 100%;
-	height: 40px;
+	height: 50px;
 }
 
 div.legend-options
 {
 	width: 20%;
-	height: 40px;
+	height: 50px;
 
-	background: red;
+	background: ;
 
 	padding: 0px;
 	float: left;
 
-	font: 10px "Arial";
+	font: 800 9px "Arial";
+	color: #FFFFFF;
+
+	text-align: center;
+	vertical-align: middle;
+}
+
+/*
+	LEGEND SPRITES
+*/
+
+div.legend1, div.legend2, div.legend3, div.legend4, div.legend5
+{	
+	width: 20px;
+	height: 20px;
+
+	margin: 5px auto 5px auto;
+}
+
+div.legend1
+{
+	background: url("Assets/legend.png") 0 0;
+}
+
+div.legend2
+{
+	background: url("Assets/legend.png") -20 0;
+}
+
+div.legend3
+{
+	background: url("Assets/legend.png") -40 0;
+}
+
+div.legend4
+{
+	background: url("Assets/legend.png") -60 0;
+}
+
+div.legend5
+{
+	background: url("Assets/legend.png") -80 0;
 }
 
 /*
@@ -85,7 +127,7 @@ div.wrapper-filter
 	width: 20%;
 	height: 100%;
 
-	background: yellow;
+	background: ;
 
 	display: block;
 
@@ -99,7 +141,7 @@ div.filter-title-menu
 
 	overflow-x: hidden;
 
-	background: blue;
+	background: ;
 }
 
 div.filter-title
@@ -107,11 +149,12 @@ div.filter-title
 	width: 100%;
 	height: auto;
 
-	background: blue;
+	background: #2AE9B8;
 
 	padding: 10px 0px 10px 10px;
 
-	font: 14px "Arial";
+	font: 900 14px "Arial";
+	color: #FFFFFF;
 
 	overflow-x: hidden;
 }
@@ -130,16 +173,44 @@ div.filter-options, div.filter-options-last
 	width: 90%;
 	height: auto;
 
-	background: red;
+	background: #FFFFFF;
 
 	padding: 5% 5% 5% 5%;
 
 	font: 10px "Arial";
+	color: #111111;
 }
 
 div.filter-options
 {
-	border-bottom: 1px solid blue;
+	border-bottom: 2px Solid #2AE9B8;
+}
+
+div.filter-options-menu
+{
+	width: auto;
+	height: 95%;
+
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+div.filter-options:hover, div.filter-options-last:hover
+{
+	width: 90%;
+	height: auto;
+
+	background: #111111;
+
+	padding: 5% 5% 5% 5%;
+
+	font: 800 10px "Arial";
+	color: #FFFFFF;
+}
+
+div.filter-options:hover
+{
+	border-bottom: 2px Solid #2AE9B8;
 }
 
 /*
