@@ -95,27 +95,27 @@ div.legend1, div.legend2, div.legend3, div.legend4, div.legend5
 
 div.legend1
 {
-	background: url("Assets/legend.png") 0 0;
+	background: #3daf2c;
 }
 
 div.legend2
 {
-	background: url("Assets/legend.png") -20 0;
+	background: #94d600;
 }
 
 div.legend3
 {
-	background: url("Assets/legend.png") -40 0;
+	background: #fFdb00;
 }
 
 div.legend4
 {
-	background: url("Assets/legend.png") -60 0;
+	background: #f28b00;
 }
 
 div.legend5
 {
-	background: url("Assets/legend.png") -80 0;
+	background: #ff4539;
 }
 
 /*
