@@ -1,0 +1,80 @@
+<html>
+	
+	<head>
+		<title>
+			Main Page
+		</title>
+
+		<!-- LINKSTYLES -->
+		<link rel="stylesheet" type="text/css" href="Stylesheets/style.css">
+		<link rel="stylesheet" type="text/css" href="Stylesheets/style-wrapper.css">
+		<link rel="stylesheet" type="text/css" href="Stylesheets/style-main.css">
+		
+		<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+		<script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
+		<link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
+	</head>
+
+	<body>
+		<div class="wrapper-outer">
+			<div class="wrapper-inner-border">	
+
+				<div class="wrapper-legend">
+					<div class="legend-title-menu">
+						<div class="legend-title">Legend</div>
+					</div>
+					<div class="legend-options-menu">
+						<div class="legend-options">&le; 1 km</div>
+						<div class="legend-options">&le; 2.5 km</div>
+						<div class="legend-options">&le; 5km</div>
+						<div class="legend-options">&le; 10 km</div>
+						<div class="legend-options">&ge; 10 km</div>
+					</div>
+				</div>	
+
+				<div class="wrapper-filter">
+					<div class="filter-title-menu">
+						<div class="filter-title">Categories</div>
+					</div>
+					<div class="filter-options-menu">
+						<div class="filter-options">Qualified staff headed by a licensed PRC physician</div>
+						<div class="filter-options">Bed Space according to DOH guidelines</div>
+						<div class="filter-options">Operating room with standard equipment with provision for sterilization</div>
+						<div class="filter-options">DOH Reference Plan in the Planning and Design of an Operating Room/Theater</div>
+						<div class="filter-options">DOH Guidelines on Cleaning, Disinfection and Sterilization of Reusable Medical Devices in Hospital Facilities in the Philippines</div>
+						<div class="filter-options">Recovery Room</div>
+						<div class="filter-options">Maternity Ward</div>
+						<div class="filter-options">Isolation room for infectious diseases</div>
+						<div class="filter-options">A separate dental room</div>
+						<div class="filter-options">Provision for blood station</div>
+						<div class="filter-options">DOH licensed secondary laboratory with consulting pathologist</div>
+						<div class="filter-options">DOH licensed level 1 imaging facility with consulting radiologist</div>
+						<div class="filter-options">DOH licensed Pharmacy</div>
+						<div class="filter-options">Qualified staff with Chief Medical Director and certified  Clinical Department Head</div>
+						<div class="filter-options">With specialties in Medicine, Pediatrics, Obstetrics and Gynecology, Surgery; their subspecialties and ancillary services</div>
+						<div class="filter-options">Provision for general ICU for critically ill patients</div>
+						<div class="filter-options">Provision for NICU (Neonatal Intensive Care Unit)</div>
+						<div class="filter-options">Provision for HRPU (High Risk Pregnancy Unit)</div>
+						<div class="filter-options">Provision for respiratory therapy services</div>
+						<div class="filter-options">A DOH licensed tertiary clinical laboratory</div>
+						<div class="filter-options">Teaching or Training hospitals with specialties in Medicine, Pediatrics, Obstetrics and Gynecology, and Surgery</div>
+						<div class="filter-options">Provision for physical medicine and rehabilitation unit</div>
+						<div class="filter-options">Provision for ambulatory surgical clinic</div>
+						<div class="filter-options">Provision for dialysis facility</div>
+						<div class="filter-options">Provision for blood bank</div>
+						<div class="filter-options">A DOH liscensed tertiary clinical laboratory with standard equipment necessary for hispathology examinations</div>
+						<div class="filter-options-last">A DOH licensed level 3 imaging facility with interventional radiology</div>
+					</div>
+				</div>
+				<div class="wrapper-map" id="map">
+					<script>
+						L.mapbox.accessToken = 'pk.eyJ1Ijoib2ZmaWNpYWxqb3NodWEiLCJhIjoiY2loOHNqOHk4MHMxYnVra3RubDVxaWJyaiJ9.BlgD_oWpdt2hCwiYcdS2nQ';
+						var map = L.mapbox.map('map', 'mapbox.streets')
+						    .setView([14.600657, 120.98215], 11);
+					</script>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

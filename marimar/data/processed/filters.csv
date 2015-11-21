@@ -1,0 +1,4 @@
+level, PRCP, BedSpace, OpRoom, RecRoom, MatWard, IsoRoom, dental, blood, pathology, radiology, pharmacy, CMDCDH_2, Spec1, ICU, NICU, HRPU, RTS, TerClin, MobX, Teach_3, PRU, ASC, Dialysis, BBank, Hispa, radiology3
+1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0
+3,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1

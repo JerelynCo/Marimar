@@ -1,27 +1,65 @@
 from flask import Flask, render_template, make_response
 from flask_restful import Api, Resource
+from math import radians, cos, sin, asin, sqrt
 import pandas as pd
 
 app = Flask(__name__)
 api = Api(app)
 
+"""
+Loading of data
+"""
 
-hiv_testing = pd.read_csv("data/with_lat_lon/hiv_testing_centers.csv")
-hiv_treatment = pd.read_csv("data/with_lat_lon/hiv_treatment_centers.csv")
+hosp_data = pd.read_csv("data/processed/hiv_testing_centers.csv")
+
+def haversine(lon1, lat1, lon2, lat2):
+    """
+    Calculate the great circle distance between two points 
+    on the earth (specified in decimal degrees)
+    """
+    # convert decimal degrees to radians 
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+    # haversine formula 
+    dlon = lon2 - lon1 
+    dlat = lat2 - lat1 
+    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
+    c = 2 * asin(sqrt(a)) 
+    km = 6367 * c
+    return km
+
+hosp_data['dist'] = 0.0
+class TopFive(Resource):
+    def get(self, pt1_lon, pt1_lat):
+        for i in range(hosp_data.shape[0]):
+            hosp_data['dist'][i] = haversine(pt1_lon, pt1_lat, hosp_data['lon'][i], hosp_data['lat'][i])
+        return make_response(hosp_data.sort(columns='dist')[:5].to_json(orient='records'))
+api.add_resource(TopFive, '/topFive/<float:pt1_lon>/<float:pt1_lat>')
 
 
-class HivTesting(Resource):
-    def get(self):
-        data = hiv_testing
-        return make_response(data.to_json(orient='records'))
-api.add_resource(HivTesting, '/api/hivtesting')
 
-class HelloWorld(Resource):
-	def get(self):
-		return {'Hello':'world'}
-api.add_resource(HelloWorld, '/')
+class CityCount(Resource):
+    def get(self, level):
+        cityCount['city'] = ""
+        cityCount['count'] = 1
 
-@app.route('/index')
+        city = np.array([])
+        count = np.array([])
+
+        filtered = hosp_data[hosp_data['level']==level]
+
+        for i in filtered['city'].unique:
+            city = np.append(city, i)
+            count = np.append(count, filtered[filtered['city'] == i].count)
+
+        cityCount['city'] = city
+        cityCount['count'] = count
+        
+        return make_response(cityCount.to_json(orient='records'))
+api.add_resource(CityCount, '/cityCount/<string:level>')
+
+
+
+@app.route('/')
 def index():
     user = {'nickname': 'Je'}
     posts = [
