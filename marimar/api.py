@@ -1,8 +1,20 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, make_response
 from flask_restful import Api, Resource
+import pandas as pd
 
 app = Flask(__name__)
 api = Api(app)
+
+
+hiv_testing = pd.read_csv("data/with_lat_lon/hiv_testing_centers.csv")
+hiv_treatment = pd.read_csv("data/with_lat_lon/hiv_treatment_centers.csv")
+
+
+class HivTesting(Resource):
+    def get(self):
+        data = hiv_testing
+        return make_response(data.to_json(orient='records'))
+api.add_resource(HivTesting, '/api/hivtesting')
 
 class HelloWorld(Resource):
 	def get(self):

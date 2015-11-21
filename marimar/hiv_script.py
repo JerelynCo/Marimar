@@ -51,3 +51,23 @@ for i in hygiene_centers['address'].index:
 		hygiene_centers['lon'][i] = g.geojson['geometry']['coordinates'][0]
 		hygiene_centers['lat'][i] = g.geojson['geometry']['coordinates'][1]
 	print(hygiene_centers['lon'][i])
+
+
+
+hospitalList = pd.read_csv("HospitalList.csv")
+hospitalList['lon'] = 0.0
+hospitalList['lat'] = 0.0
+for i in range(hospitalList.shape[0]):
+	g = geocoder.google("%s, %s, %s, %s" %(hospitalList['Street Name and #'][i],hospitalList['Barangay Name'][i], hospitalList['City/Municipality'][i], "PH" ))
+
+	if g.geojson['properties']['ok'] == False:
+		print(i, ': failed to locate')
+		hospitalList['lon'][i] = 0.0
+		hospitalList['lat'][i] = 0.0
+	else:
+		print(i, ': located')
+		hospitalList['lon'][i] = g.geojson['geometry']['coordinates'][0]
+		hospitalList['lat'][i] = g.geojson['geometry']['coordinates'][1]
+	
+	print(hospitalList['lon'][i])
+	print(hospitalList['lat'][i])
