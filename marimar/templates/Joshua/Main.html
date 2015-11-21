@@ -138,7 +138,6 @@
 						function plotAllHospitals(hospitalJson){
 							for(var i = 0; i < hospitalJson.hospitals.length; i++){
 								markers.addLayer(L.marker([hospitalJson.hospitals[i].lat,hospitalJson.hospitals[i].lon], {icon: pinme}));
-
 							}
 						}
 
