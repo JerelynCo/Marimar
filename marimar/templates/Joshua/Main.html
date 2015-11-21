@@ -25,6 +25,11 @@
 		<script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
 		<link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
 
+
+		<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+		<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
+		<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
+
 	</head>
 
 	<body>
@@ -170,7 +175,7 @@
 							}
 						}
 
-						var markers = new L.FeatureGroup();
+						var markers = new L.MarkerClusterGroup();
 						var currentMarker;
 						var highest = 0;
 						var count = { "cities" : [{"City":"Kalookan","Count":6.0},{"City":"Quezon","Count":13.0},{"City":"Muntinlupa","Count":5.0},{"City":"Marikina","Count":6.0},{"City":"Pasig","Count":9.0},{"City":"Manila","Count":6.0},{"City":"Makati","Count":1.0},{"City":"Mandaluyong","Count":1.0},{"City":"Taguig","Count":1.0},{"City":"Valenzuela","Count":2.0}]};
