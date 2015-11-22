@@ -175,6 +175,17 @@
 								else
 									pin = pin5
 		    					markers.addLayer(L.marker([top5Hospitals[i].lat, top5Hospitals[i].lon], {icon: pin}));
+
+								var popupContent =  "<p class = 'FacilityName'>" + top5Hospitals[i].FacilityName + "</p>" +
+									"<p class = 'OtherName'>" + top5Hospitals[i].Classification + " Hospital</p>"+
+									"<p class = 'OtherName'>" + top5Hospitals[i].BarangayName + ", " + top5Hospitals[i].City + " City</p>"+
+									"<p class = 'OtherName'>Landline: " + top5Hospitals[i].LandlineNumber + "</p>";
+
+								marker1.bindPopup(popupContent,{
+							        closeButton: false,
+							        minWidth: 250
+							    });
+
 							}
 						}
 
@@ -279,6 +290,7 @@
 						}).addTo(map);
 
 						var layer = L.geoJson(metroManilaData, {style:style}).addTo(map);
+                        layer.on('click',  onMapClick);
 
 						map.addLayer(markers);
 
