@@ -36,8 +36,8 @@ class TopFive(Resource):
         filtered['dist'] = 0.0
 
         for i in range(filtered.shape[0]):
-            filtered['dist'][i] = haversine((pt1_lon, pt1_lat), (filtered['lon'][i], filtered['lat'][i]))
-        return make_response(filtered.sort(columns='dist')[:5].to_json(orient='records'))
+            filtered['dist'][i] = haversine((pt1_lat, pt1_lon), (filtered['lat'][i], filtered['lon'][i]))
+        return make_response(filtered.sort(columns='dist', ascending=True)[0:5].to_json(orient='records'))
 api.add_resource(TopFive, '/topfive/<string:facility>/<float:pt1_lon>/<float:pt1_lat>')
 
 """

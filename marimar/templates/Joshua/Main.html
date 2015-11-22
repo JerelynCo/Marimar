@@ -283,7 +283,6 @@
 //						layer.on('click',  onMapClick);
 
 						//on map click
-						map.on('click', onMapClick);
 
 						map.addLayer(markers);
 
@@ -295,13 +294,13 @@
 
                         $(".filter-options").on("click", function(){
                             layer.clearLayers();
+                            facility = this.id;
                             $.getJSON("http://localhost:8000/citycount/" + this.id, function(result){
                                 try {
                                     map.removeLayer(layer);
                                 } catch (e) {
 
                                 }
-                                facility = this.id;
                                 count = result;
                                 highest = 0;
         						for(var i=0; i<count.length; i++){
