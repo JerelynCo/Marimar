@@ -15,6 +15,72 @@ div.wrapper-outer
 /*
 	WRAPPER INNER
 */
+div.info-appslogan-mini
+{
+	width: 75px;
+	height: 75px;
+
+	background-image: url("Assets/slogan.jpg");
+	background-size: 75px 75px;
+	background-repeat: no-repeat;
+
+	top: 20px;
+	right: 20px;
+
+	position: absolute;
+	display: fixed;
+
+	z-index: 11;
+}
+
+div.wrapper-info 
+{
+	width: 200px;
+	height: 425px;
+
+	background-image: url("Assets/black_50.png");
+
+	top: 20px;
+	right: 20px;
+
+	position: absolute;
+	display: fixed;
+
+	z-index: 10;
+}
+
+div.info-appslogan
+{
+	width: 200px;
+	height: 200px;
+
+	background-image: url("Assets/slogan.jpg");
+	background-size: 200px 200px;
+	background-repeat: no-repeat;
+
+	position: block;
+}
+
+div.info-content
+{
+	padding: 10px 20px;
+}
+
+div.info-content p
+{
+	font: 800 14px Arial;
+	color: #FFFFFF;
+}
+
+div.info-content ul
+{
+	font: 200 10px Arial;
+	color: #FFFFFF;
+}
+
+/*
+	WRAPPER INNER
+*/
 
 div.wrapper-legend 
 {
@@ -185,7 +251,7 @@ div.filter-options-menu
 	overflow-x: hidden;
 }
 
-div.filter-options:hover, div.filter-options-last:hover
+div.filter-options:hover, div.filter-options-last:hover, div.filter-options:active, div.filter-options-last:active
 {
 	width: 90%;
 	height: auto;

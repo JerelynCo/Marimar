@@ -2,7 +2,7 @@
 
 	<head>
 		<title>
-			Main Page
+			HEALTHZONE
 		</title>
 
 		<!-- LINKSTYLES -->
@@ -23,16 +23,43 @@
 		<script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
 		<link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
 
-
 		<script src='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
 		<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.css' rel='stylesheet' />
 		<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/MarkerCluster.Default.css' rel='stylesheet' />
 
+		<script>
+		$(document).ready(function(){
+			$("#info-main").hide();			
+
+		    $("#info-mini").click(function(){
+		        $("#info-mini").hide();
+		        $("#info-main").show();
+		    });
+		    $("#info-main").click(function(){
+		        $("#info-mini").show();
+		        $("#info-main").hide();
+		    });
+		});
+		</script>
 	</head>
 
 	<body>
 		<div class="wrapper-outer">
 			<div class="wrapper-inner-border">
+				<div class="info-appslogan-mini" id="info-mini"></div>
+
+				<div class="wrapper-info" id="info-main" style="display: none">
+					<div class="info-appslogan"></div>
+					<div class="info-content">
+						<p>How to use HEALTHZONE</p>
+						<ul>
+							<li>Select a filter on the Categories tab</li>
+							<li>A saturation map will appear, showing the density of the health facilities in a city</li>
+							<li>Get the 5 nearest facilities in a specific area by clicking on the map</li>
+							<li>The legend below will show the distance of the top 5 nearest hospitals</li>
+						</ul>
+					</div>
+				</div>
 
 				<div class="wrapper-legend">
 					<div class="legend-title-menu">
