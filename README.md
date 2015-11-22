@@ -7,11 +7,11 @@ Objectives:
 
 ## ‎Screenshots‬
 
-![Specific Healthcare Facility Availability](url to screenshot)
+![Specific Healthcare Facility Availability](https://github.com/JerelynCo/Marimar/raw/master/Facilities%20heatmap.PNG)
 
-![Nearest Available Facilities](url to screenshot)
+![Nearest Available Facilities](https://github.com/JerelynCo/Marimar/raw/master/Nearest%20Facilities.PNG)
 
-![Healthcare Facilities Descriptions](url to screenshot)
+![Healthcare Facilities Descriptions](https://github.com/JerelynCo/Marimar/raw/master/Popup-description.PNG)
 
 ## Tech and Data Used
 ### Data Sources
@@ -55,4 +55,3 @@ Objectives:
 * Hadrian Paulo Lim (Backend Developer)
 * Mary Grace Malana (Frontend Developer)
 * Marion Ivan Tan (Data Processor)
-
