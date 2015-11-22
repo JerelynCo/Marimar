@@ -1,4 +1,8 @@
 #HealthZone
+Identify locations with lacking health facilities
+To map the health facilities so that researchers and the gov’t can measure geographic accessibility of health centers to the community.
+View health outcomes and health financing data and how it's distributed geographically.
+Inform the public on what/how DoH programs are faring. (Are these effective? Are the finances utilized well?)
 <descrip>
 #‪#‎Screenshots‬
 ![<Image Title>](url to screenshot)
@@ -8,11 +12,7 @@
 *<Authors/Members - Role>
 
 HEALTHZONE
-A web based app that will direct you to the nearest health facility from your location.
 
-To researchers it can be used to see the distribution of health faciltities. 
-This Information will help them plan for the addition of other health facilities.
-or aide them during the treatment of the community.   
 
 # Open Data PH Hackathon Vagrant Box
 - - -
