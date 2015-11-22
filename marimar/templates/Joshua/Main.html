@@ -154,7 +154,7 @@
 	    					currentMarker = L.marker(e.latlng, {icon: pinme}).addTo(map);
 
                             // AJAX
-                            $.getJSON("http://localhost:8000/topfive/" + facility + "/" + e.latlng.lon + "/" + e.latlng.lat, function(result){
+                            $.getJSON("http://localhost:8000/topfive/ICU" + "/" + e.latlng.lng + "/" + e.latlng.lat, function(result){
                                 top5Hosps = result;
                             });
 	    					markers.clearLayers();
@@ -280,14 +280,12 @@
 
 						var layer = L.geoJson(metroManilaData, {style:style}).addTo(map);
 
-						layer.on('click',  onMapClick);
+//						layer.on('click',  onMapClick);
 
 						//on map click
 						map.on('click', onMapClick);
 
 						map.addLayer(markers);
-
-//    					L.marker([14.600657, 120.98215], {icon: pinme}).addTo(map);
 
                         $.getJSON("http://localhost:8000/hospinfo", function(result){
                             hospitals = result;
@@ -296,6 +294,7 @@
 
 
                         $(".filter-options").on("click", function(){
+                            layer.clearLayers();
                             $.getJSON("http://localhost:8000/citycount/" + this.id, function(result){
                                 try {
                                     map.removeLayer(layer);
@@ -312,6 +311,8 @@
                                 }
                                 layer = L.geoJson(metroManilaData, {style:style});
                                 layer.addTo(map);
+                                layer.on('click',  onMapClick);
+
                             });
                         });
 
