@@ -156,9 +156,9 @@
                             // AJAX
                             $.getJSON("http://localhost:8000/topfive/" + facility + "/" + e.latlng.lng + "/" + e.latlng.lat, function(result){
                                 top5Hosps = result;
+    	    					markers.clearLayers();
+    							plotHospitals(currentMarker, top5Hosps);
                             });
-	    					markers.clearLayers();
-							plotHospitals(currentMarker, top5Hosps);
 						}
 
 						function plotHospitals(fromMarker, top5Hospitals){
