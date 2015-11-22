@@ -154,7 +154,7 @@
 	    					currentMarker = L.marker(e.latlng, {icon: pinme}).addTo(map);
 
                             // AJAX
-                            $.getJSON("http://localhost:8000/topfive/ICU" + "/" + e.latlng.lng + "/" + e.latlng.lat, function(result){
+                            $.getJSON("http://localhost:8000/topfive/" + facility + "/" + e.latlng.lng + "/" + e.latlng.lat, function(result){
                                 top5Hosps = result;
                             });
 	    					markers.clearLayers();
@@ -280,17 +280,12 @@
 
 						var layer = L.geoJson(metroManilaData, {style:style}).addTo(map);
 
-//						layer.on('click',  onMapClick);
-
-						//on map click
-
 						map.addLayer(markers);
 
                         $.getJSON("http://localhost:8000/hospinfo", function(result){
                             hospitals = result;
                             plotAllHospitals(hospitals);
                         });
-
 
                         $(".filter-options").on("click", function(){
                             layer.clearLayers();
