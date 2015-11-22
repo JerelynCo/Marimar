@@ -3,6 +3,7 @@ from flask_restful import Api, Resource
 from math import radians, cos, sin, asin, sqrt
 import pandas as pd
 import numpy as np
+import math
 
 app = Flask(__name__)
 api = Api(app)
@@ -12,31 +13,30 @@ Loading of data
 """
 hosp_data = pd.read_csv("data/processed/hospitals_complete.csv")
 
-def haversine(lon1, lat1, lon2, lat2):
-    """
-    Calculate the great circle distance between two points 
-    on the earth (specified in decimal degrees)
-    """
-    # convert decimal degrees to radians 
-    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
-    # haversine formula 
-    dlon = lon2 - lon1 
-    dlat = lat2 - lat1 
-    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
-    c = 2 * asin(sqrt(a)) 
-    km = 6367 * c
-    return km
+def haversine(origin, destination):
+    lat1, lon1 = origin
+    lat2, lon2 = destination
+    radius = 6371 # km
+
+    dlat = math.radians(lat2-lat1)
+    dlon = math.radians(lon2-lon1)
+    a = math.sin(dlat/2) * math.sin(dlat/2) + math.cos(math.radians(lat1)) \
+        * math.cos(math.radians(lat2)) * math.sin(dlon/2) * math.sin(dlon/2)
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+    d = radius * c
+
+    return d
 
 """
 API for topfive nearby hospitals
 """
-class TopFive(Resource): 
+class TopFive(Resource):
     def get(self, facility, pt1_lon, pt1_lat):
         filtered = hosp_data[hosp_data[facility]==1].reset_index()
         filtered['dist'] = 0.0
 
         for i in range(filtered.shape[0]):
-            filtered['dist'][i] = haversine(pt1_lon, pt1_lat, filtered['lon'][i], filtered['lat'][i])
+            filtered['dist'][i] = haversine((pt1_lon, pt1_lat), (filtered['lon'][i], filtered['lat'][i]))
         return make_response(filtered.sort(columns='dist')[:5].to_json(orient='records'))
 api.add_resource(TopFive, '/topfive/<string:facility>/<float:pt1_lon>/<float:pt1_lat>')
 
@@ -79,13 +79,13 @@ api.add_resource(CityCount, '/citycount/<string:facility>')
 def index():
     user = {'nickname': 'Je'}
     posts = [
-        { 
-            'author': {'nickname': 'John'}, 
-            'body': 'Beautiful day in Portland!' 
+        {
+            'author': {'nickname': 'John'},
+            'body': 'Beautiful day in Portland!'
         },
-        { 
-            'author': {'nickname': 'Susan'}, 
-            'body': 'The Avengers movie was so cool!' 
+        {
+            'author': {'nickname': 'Susan'},
+            'body': 'The Avengers movie was so cool!'
         }
     ]
     return render_template('index.html', title='Home', user=user, posts=posts)
