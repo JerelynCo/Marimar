@@ -162,19 +162,19 @@
 						}
 
 						function plotHospitals(fromMarker, top5Hospitals){
-							for(var i = 0; i < hospitals.length; i++){
+							for(var i = 0; i < top5Hospitals.length; i++){
 								var pin;
-								if(hospitals[i].dist < 1)
+								if(top5Hospitals[i].dist < 1)
 									pin = pin1
-								else if(hospitals[i].dist < 2.5)
+								else if(top5Hospitals[i].dist < 2.5)
 									pin = pin2
-								else if(hospitals[i].dist < 5)
+								else if(top5Hospitals[i].dist < 5)
 									pin = pin3
-								else if(hospitals[i].dist < 10)
+								else if(top5Hospitals[i].dist < 10)
 									pin = pin4
 								else
 									pin = pin5
-		    					markers.addLayer(L.marker([hospitals[i].lat, hospitals[i].lon], {icon: pin}));
+		    					markers.addLayer(L.marker([top5Hospitals[i].lat, top5Hospitals[i].lon], {icon: pin}));
 							}
 						}
 
