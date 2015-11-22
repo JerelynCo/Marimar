@@ -174,7 +174,9 @@
 									pin = pin4
 								else
 									pin = pin5
-		    					markers.addLayer(L.marker([top5Hospitals[i].lat, top5Hospitals[i].lon], {icon: pin}));
+
+								var marker1 = L.marker([top5Hospitals[i].lat, top5Hospitals[i].lon], {icon: pin});
+		    					markers.addLayer(marker1);
 
 								var popupContent =  "<p class = 'FacilityName'>" + top5Hospitals[i].FacilityName + "</p>" +
 									"<p class = 'OtherName'>" + top5Hospitals[i].Classification + " Hospital</p>"+
