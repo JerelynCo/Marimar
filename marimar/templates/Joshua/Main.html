@@ -152,6 +152,11 @@
 	    					if(currentMarker != null)
 	    						map.removeLayer(currentMarker)
 	    					currentMarker = L.marker(e.latlng, {icon: pinme}).addTo(map);
+
+                            // AJAX
+                            $.getJSON("http://localhost:8000/topfive/" + facility + "/" + e.latlng.lon + "/" + e.latlng.lat, function(result){
+                                top5Hosps = result;
+                            });
 	    					markers.clearLayers();
 							plotHospitals(currentMarker, top5Hosps);
 						}
@@ -178,6 +183,8 @@
 						var highest = 0;
 						var count = {};
                         var hospitals = {};
+                        var facility;
+                        var top5Hosps = {};
 
 						// PINS
 						var pin1 = L.icon({
@@ -285,7 +292,6 @@
                         $.getJSON("http://localhost:8000/hospinfo", function(result){
                             hospitals = result;
                             plotAllHospitals(hospitals);
-
                         });
 
 
@@ -296,6 +302,7 @@
                                 } catch (e) {
 
                                 }
+                                facility = this.id;
                                 count = result;
                                 highest = 0;
         						for(var i=0; i<count.length; i++){
